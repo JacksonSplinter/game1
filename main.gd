@@ -3,6 +3,7 @@ extends Node
 export(PackedScene) var mob_scene
 var score
 #TEST
+#balls
 
 
 # Called when the node enters the scene tree for the first time.
