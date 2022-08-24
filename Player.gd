@@ -4,13 +4,15 @@ signal hit
 export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 
-
-# Called when the node enters the scene tree for 
-#the first time.
+# Called when the node enters the scene tree for the first time.
+# Hides the character model
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 
+# When main scene sends the start signal and gets a starting postion
+# puts player in the starting position
+# Shows the player model and enables the hitbox
 func start(pos):
 	position = pos
 	show()
@@ -45,9 +47,10 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_v = velocity.y > 0
 
+# Player disappears after being hit
 
 func _on_Player_body_entered(body):
-	hide() # Player disappears after being hit.
+	hide() 
 	emit_signal("hit")
 	# Must be deferred as we can't change physics properties on a physics callback.
 	$CollisionShape2D.set_deferred("disabled", true)
