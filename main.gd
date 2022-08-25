@@ -1,21 +1,14 @@
 extends Node
-
 export(PackedScene) var mob_scene
-var score
-#TEST
-#balls
+var score # user score
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
+# When a game over is triggered the timer is stopped, mons stop spawning
+# the hud displays the game over message the music stops and the death sound plays
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
@@ -23,6 +16,10 @@ func game_over():
 	$Music.stop()
 	$DeathSound.play()
 
+# When a new game is triggered the score is set to zero and then
+# the player is moved to the starting postions and the timer is started
+# The score gets updated and a starting message is diplayed
+# the music is set to the volume chosen in the setting menu
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
@@ -59,16 +56,18 @@ func _on_MobTimer_timeout():
 	add_child(mob)
 
 
-
+# when the scoretimer is timedout the player gets one point and then
+# the score is upadted in the HUD
 func _on_ScoreTimer_timeout():
 	score += 1
 	$HUD.update_score(score)
 
-
+# When the start timer ends the mobs begin to spawn and the player
+# can start earning score
 func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
 
-
+# If the player chooses a new bakcgorund color in settings it is changed
 func _on_Settings_new_bg():
 	$ColorRect.color = $Settings/ColorPickerButton.color

@@ -18,7 +18,10 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-
+# Every frame the process is calculated
+# Sets the velocity to zero and then checks for player input
+# if input detected the player moves the corresponding direction
+# also orients the player model corresponding to current movement
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
@@ -48,7 +51,6 @@ func _process(delta):
 		$AnimatedSprite.flip_v = velocity.y > 0
 
 # Player disappears after being hit
-
 func _on_Player_body_entered(body):
 	hide() 
 	emit_signal("hit")
