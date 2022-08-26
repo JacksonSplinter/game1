@@ -83,8 +83,10 @@ margin_left = -17.24
 margin_top = -55.96
 margin_right = 216.76
 margin_bottom = 5.03998
-value = 100.0
-tick_count = 100
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 7
 
 [node name="VolumeText" type="Label" parent="."]
 margin_left = 295.0
@@ -116,6 +118,15 @@ stream = ExtResource( 3 )
 [node name="Timer" type="Timer" parent="VolSample"]
 wait_time = 2.0
 
+[node name="Mute" type="CheckButton" parent="."]
+margin_left = 89.0
+margin_top = 480.0
+margin_right = 165.0
+margin_bottom = 520.0
+focus_mode = 0
+text = "Mute"
+align = 1
+
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="popup_closed" from="ColorPickerButton" to="." method="_on_ColorPickerButton_popup_closed"]
 [connection signal="toggled" from="Easy" to="." method="_on_Easy_toggled"]
@@ -124,3 +135,4 @@ wait_time = 2.0
 [connection signal="value_changed" from="Volume" to="." method="_on_Volume_value_changed"]
 [connection signal="pressed" from="VolSample" to="." method="_on_VolSample_pressed"]
 [connection signal="timeout" from="VolSample/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Mute" to="." method="_on_Mute_pressed"]

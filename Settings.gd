@@ -16,7 +16,7 @@ func _ready():
 	$Volume.hide()
 	$VolNum.hide()
 	$VolSample.hide()
-	
+	$Mute.hide()
 
 # When settings signal is received from main scene
 # all the nodes show themselves
@@ -31,6 +31,7 @@ func _on_settings():
 	$Volume.show()
 	$VolNum.show()
 	$VolSample.show()
+	$Mute.show()
 
 # When the back button is pressed all the nodes hide themselves
 # If music is playing it is stopped
@@ -41,11 +42,12 @@ func _on_BackButton_pressed():
 	$BGColor.hide()
 	$Easy.hide()
 	$Medium.hide()
-	$Hard.hide()
+	$Hard.hide() 
 	$VolumeText.hide()
 	$Volume.hide()
 	$VolNum.hide()
 	$VolSample.hide()
+	$Mute.hide()
 	$VolSample/SampleMusic.stop()
 	emit_signal("back_clicked") 
 
@@ -82,15 +84,22 @@ func _on_ColorPickerButton_popup_closed():
 
 # When the voluke slider is changed the display number is changed accordingly
 func _on_Volume_value_changed(value):
-	$VolNum.text = str(value)+"%"
+	$VolNum.text = str(value*100)+"%"
 
 # When the sample music button is pressed it plays a clip of
 # a song at the new volume level
 func _on_VolSample_pressed():
 	$VolSample/SampleMusic.play()
-	$VolSample/SampleMusic.volume_db = 0-(100-$Volume.value)
+	$VolSample/SampleMusic.volume_db = linear2db($Volume.value)
 	$VolSample/Timer.start()
 
 # When the timer is ended the sample music stops
 func _on_Timer_timeout():
 	$VolSample/SampleMusic.stop()
+
+# mutes audio upon being pressed
+func _on_Mute_pressed():
+	if $Mute.pressed == true:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),true)
+	elif $Mute.pressed == false:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),false)

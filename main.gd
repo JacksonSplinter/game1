@@ -28,7 +28,7 @@ func new_game():
 	$HUD.show_message("Get Fucking Ready")
 	get_tree().call_group("mobs", "queue_free")
 	$Music.play()
-	$Music.volume_db = 0-(100-$Settings/Volume.value)
+	$Music.volume_db = linear2db($Settings/Volume.value)
 
 func _on_MobTimer_timeout():
 	# Create a new instance of the Mob scene.
