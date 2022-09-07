@@ -2,6 +2,10 @@ extends CanvasLayer
 
 signal back_clicked
 signal new_bg
+signal easy
+signal medium
+signal hard
+
 
 # Called when the node enters the scene tree for the first time.
 # Hides all nodes
@@ -59,6 +63,8 @@ func _on_Hard_toggled(button_pressed):
 	if $Hard.pressed == true:
 		$Medium.pressed = false
 		$Easy.pressed = false
+	
+	emit_signal("hard")
 
 # When medium mode is enabled makes sure that both options are disabled
 func _on_Medium_toggled(button_pressed):
@@ -68,6 +74,8 @@ func _on_Medium_toggled(button_pressed):
 	if $Medium.pressed == true:
 		$Hard.pressed = false
 		$Easy.pressed = false
+	
+	emit_signal("medium")
 
 # When easy mode is enabled makes sure that both options are disabled
 func _on_Easy_toggled(button_pressed):
@@ -77,6 +85,8 @@ func _on_Easy_toggled(button_pressed):
 	if $Easy.pressed == true:
 		$Hard.pressed = false
 		$Medium.pressed = false
+	
+	emit_signal("easy")
 
 # When the color picker window is closed it emits a signal to the main scene
 func _on_ColorPickerButton_popup_closed():

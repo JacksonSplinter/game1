@@ -71,3 +71,12 @@ func _on_StartTimer_timeout():
 # If the player chooses a new bakcgorund color in settings it is changed
 func _on_Settings_new_bg():
 	$ColorRect.color = $Settings/ColorPickerButton.color
+
+func _on_Settings_easy():
+	$MobTimer.wait_time = 1
+
+func _on_Settings_hard():
+	$MobTimer.wait_time = .25
+
+func _on_Settings_medium():
+	$MobTimer.wait_time = .5
