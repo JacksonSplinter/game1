@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal start_game
 signal settings
+signal highscore
 
 # a function that takes a text input and displays it and starts a timer
 func show_message(text):
@@ -25,6 +26,7 @@ func show_game_over():
 	
 	$StartButton.show()
 	$SettingsButton.show()
+	$Highscore.show()
 
 # function that takes the input of score and displays it
 func update_score(score):
@@ -35,6 +37,7 @@ func update_score(score):
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	$SettingsButton.hide()
+	$Highscore.hide()
 	emit_signal("start_game")
 
 # when the message timer is timedout the message is hidden
@@ -48,6 +51,7 @@ func _on_SettingsButton_pressed():
 	$SettingsButton.hide()
 	$Message.hide()
 	$ScoreLabel.hide()
+	$Highscore.hide()
 	emit_signal("settings")
 
 # When the signal of the back button is received the HUD is displayed again
@@ -56,3 +60,22 @@ func _on_Settings_back_clicked():
 	$SettingsButton.show()
 	$Message.show()
 	$ScoreLabel.show()
+	$Highscore.show()
+
+func _on_Scoreboard_pressed():
+	$StartButton.hide()
+	$SettingsButton.hide()
+	$Message.hide()
+	$ScoreLabel.hide()
+	$Highscore.hide()
+	emit_signal("highscore")
+
+func _on_ScoreBoard_menu():
+	$StartButton.show()
+	$SettingsButton.show()
+	$Message.show()
+	$ScoreLabel.show()
+	$Highscore.show()
+
+func _on_ScoreBoard_replay():
+	emit_signal("start_game")

@@ -51,10 +51,9 @@ func _on_MobTimer_timeout():
 	# Choose the velocity for the mob.
 	var velocity = Vector2(rand_range(150.0, 250.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
-
+	
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
-
 
 # when the scoretimer is timedout the player gets one point and then
 # the score is upadted in the HUD

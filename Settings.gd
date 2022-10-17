@@ -56,7 +56,7 @@ func _on_BackButton_pressed():
 	emit_signal("back_clicked") 
 
 # When hard mode is enabled makes sure that both options are disabled
-func _on_Hard_toggled(button_pressed):
+func _on_Hard_toggled(_button_pressed):
 	if $Easy.pressed == false && $Medium.pressed == false:
 		$Hard.pressed = true
 
@@ -67,7 +67,7 @@ func _on_Hard_toggled(button_pressed):
 	emit_signal("hard")
 
 # When medium mode is enabled makes sure that both options are disabled
-func _on_Medium_toggled(button_pressed):
+func _on_Medium_toggled(_button_pressed):
 	if $Easy.pressed == false && $Hard.pressed == false:
 		$Medium.pressed = true
 
@@ -78,7 +78,7 @@ func _on_Medium_toggled(button_pressed):
 	emit_signal("medium")
 
 # When easy mode is enabled makes sure that both options are disabled
-func _on_Easy_toggled(button_pressed):
+func _on_Easy_toggled(_button_pressed):
 	if $Medium.pressed == false && $Hard.pressed == false:
 		$Easy.pressed = true
 
