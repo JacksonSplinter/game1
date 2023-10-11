@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="FontFile" id=1]
 [ext_resource path="res://Highscore.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 64
 font_data = ExtResource( 1 )
 
@@ -21,22 +21,22 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Header" type="Label" parent="."]
-margin_left = 193.0
-margin_top = 60.0
-margin_right = 298.0
-margin_bottom = 80.0
-custom_fonts/font = SubResource( 1 )
+offset_left = 193.0
+offset_top = 60.0
+offset_right = 298.0
+offset_bottom = 80.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Highscores:"
 align = 1
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 0.083
 anchor_bottom = 0.019
-margin_left = 104.0
-margin_top = 128.0
-margin_right = 354.16
-margin_bottom = 341.32
-custom_fonts/font = SubResource( 2 )
+offset_left = 104.0
+offset_top = 128.0
+offset_right = 354.16
+offset_bottom = 341.32
+theme_override_fonts/font = SubResource( 2 )
 text = "Highscores go here
 1 highscore1
 2 highscore2
@@ -49,21 +49,21 @@ valign = 1
 [node name="PlayAgain" type="Button" parent="."]
 anchor_right = 0.604
 anchor_bottom = 0.717
-margin_left = 51.0
-margin_top = 425.0
-margin_right = 128.08
-margin_bottom = 8.76001
-custom_fonts/font = SubResource( 3 )
+offset_left = 51.0
+offset_top = 425.0
+offset_right = 128.08
+offset_bottom = 8.76001
+theme_override_fonts/font = SubResource( 3 )
 text = "Play Again"
 
 [node name="Menu" type="Button" parent="."]
 anchor_right = 0.289
 anchor_bottom = 0.56
-margin_left = 73.0
-margin_top = 568.0
-margin_right = 257.28
-margin_bottom = 264.8
-custom_fonts/font = SubResource( 4 )
+offset_left = 73.0
+offset_top = 568.0
+offset_right = 257.28
+offset_bottom = 264.8
+theme_override_fonts/font = SubResource( 4 )
 text = "Menu"
 
 [connection signal="pressed" from="PlayAgain" to="." method="_on_PlayAgain_pressed"]

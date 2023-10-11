@@ -57,34 +57,34 @@ func _on_BackButton_pressed():
 
 # When hard mode is enabled makes sure that both options are disabled
 func _on_Hard_toggled(_button_pressed):
-	if $Easy.pressed == false && $Medium.pressed == false:
-		$Hard.pressed = true
+	if $Easy.button_pressed == false && $Medium.pressed == false:
+		$Hard.button_pressed = true
 
-	if $Hard.pressed == true:
-		$Medium.pressed = false
-		$Easy.pressed = false
+	if $Hard.button_pressed == true:
+		$Medium.button_pressed = false
+		$Easy.button_pressed = false
 	
 	emit_signal("hard")
 
 # When medium mode is enabled makes sure that both options are disabled
 func _on_Medium_toggled(_button_pressed):
-	if $Easy.pressed == false && $Hard.pressed == false:
-		$Medium.pressed = true
+	if $Easy.button_pressed == false && $Hard.pressed == false:
+		$Medium.button_pressed = true
 
-	if $Medium.pressed == true:
-		$Hard.pressed = false
-		$Easy.pressed = false
+	if $Medium.button_pressed == true:
+		$Hard.button_pressed = false
+		$Easy.button_pressed = false
 	
 	emit_signal("medium")
 
 # When easy mode is enabled makes sure that both options are disabled
 func _on_Easy_toggled(_button_pressed):
-	if $Medium.pressed == false && $Hard.pressed == false:
-		$Easy.pressed = true
+	if $Medium.button_pressed == false && $Hard.pressed == false:
+		$Easy.button_pressed = true
 
-	if $Easy.pressed == true:
-		$Hard.pressed = false
-		$Medium.pressed = false
+	if $Easy.button_pressed == true:
+		$Hard.button_pressed = false
+		$Medium.button_pressed = false
 	
 	emit_signal("easy")
 
@@ -100,7 +100,7 @@ func _on_Volume_value_changed(value):
 # a song at the new volume level
 func _on_VolSample_pressed():
 	$VolSample/SampleMusic.play()
-	$VolSample/SampleMusic.volume_db = linear2db($Volume.value)
+	$VolSample/SampleMusic.volume_db = linear_to_db($Volume.value)
 	$VolSample/Timer.start()
 
 # When the timer is ended the sample music stops
@@ -109,7 +109,9 @@ func _on_Timer_timeout():
 
 # mutes audio upon being pressed
 func _on_Mute_pressed():
-	if $Mute.pressed == true:
+	if $Mute.button_pressed == true:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),true)
-	elif $Mute.pressed == false:
+	elif $Mute.button_pressed == false:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),false)
+
+#test

@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="FontFile" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 64
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 64
 font_data = ExtResource( 1 )
 
@@ -19,31 +19,31 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="ScoreLabel" type="Label" parent="."]
-margin_left = 179.0
-margin_top = 40.0
-margin_right = 269.0
-margin_bottom = 118.0
-custom_fonts/font = SubResource( 1 )
+offset_left = 179.0
+offset_top = 40.0
+offset_right = 269.0
+offset_bottom = 118.0
+theme_override_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 
 [node name="Message" type="Label" parent="."]
-margin_left = 20.0
-margin_top = 161.0
-margin_right = 445.0
-margin_bottom = 401.0
-custom_fonts/font = SubResource( 1 )
+offset_left = 20.0
+offset_top = 161.0
+offset_right = 445.0
+offset_bottom = 401.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Dodge the
 Creeps!"
 align = 1
 autowrap = true
 
 [node name="StartButton" type="Button" parent="."]
-margin_left = 72.0
-margin_top = 384.0
-margin_right = 395.0
-margin_bottom = 484.0
-custom_fonts/font = SubResource( 1 )
+offset_left = 72.0
+offset_top = 384.0
+offset_right = 395.0
+offset_bottom = 484.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]
@@ -51,19 +51,19 @@ wait_time = 2.0
 one_shot = true
 
 [node name="SettingsButton" type="Button" parent="."]
-margin_left = 72.0
-margin_top = 496.0
-margin_right = 395.0
-margin_bottom = 596.0
-custom_fonts/font = SubResource( 2 )
+offset_left = 72.0
+offset_top = 496.0
+offset_right = 395.0
+offset_bottom = 596.0
+theme_override_fonts/font = SubResource( 2 )
 text = "Settings"
 
 [node name="Highscore" type="Button" parent="."]
-margin_left = 60.0
-margin_top = 608.0
-margin_right = 407.0
-margin_bottom = 708.0
-custom_fonts/font = SubResource( 3 )
+offset_left = 60.0
+offset_top = 608.0
+offset_right = 407.0
+offset_bottom = 708.0
+theme_override_fonts/font = SubResource( 3 )
 text = "Highscore"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
