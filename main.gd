@@ -79,3 +79,5 @@ func _on_Settings_hard():
 
 func _on_Settings_medium():
 	$MobTimer.wait_time = .5
+
+#test2
